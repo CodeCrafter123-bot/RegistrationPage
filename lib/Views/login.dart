@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:registrationpage/Controllers/RegistrationController.dart';
+import 'package:registrationpage/Controllers/logincontroller.dart';
+import 'package:registrationpage/Routes/AppRoute.dart';
+import 'package:registrationpage/Views/Registration.dart';
 
-class Registration extends GetView<RegistrationController> {
-  const Registration({super.key}); // Add constructor if missing
+
+class Login extends GetView<Logincontroller> {
+  const Login({super.key}); // Add constructor if missing
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text("Registration Page")),
+        title: const Center(child: Text("Login Page")),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: SingleChildScrollView(
@@ -17,13 +20,7 @@ class Registration extends GetView<RegistrationController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text("Name:"),
-            const SizedBox(height: 6),
-            TextField(
-              controller: controller.nameController,
-              decoration: _inputDecoration(Icons.person, "Full Name"),
-            ),
-            const SizedBox(height: 16),
+           
 
             const Text("Email:"),
             const SizedBox(height: 6),
@@ -33,22 +30,9 @@ class Registration extends GetView<RegistrationController> {
             ),
             const SizedBox(height: 16),
 
-            const Text("Phone Number:"),
-            const SizedBox(height: 6),
-            TextField(
-              controller: controller.phoneController,
-              keyboardType: TextInputType.phone,
-              decoration: _inputDecoration(Icons.phone, "Phone Number"),
-            ),
-            const SizedBox(height: 16),
+            
 
-            const Text("Country:"),
-            const SizedBox(height: 6),
-            TextField(
-              controller: controller.countryController,
-              decoration: _inputDecoration(Icons.flag, "Country"),
-            ),
-            const SizedBox(height: 16),
+          
 
             const Text("Password:"),
             const SizedBox(height: 6),
@@ -71,10 +55,38 @@ class Registration extends GetView<RegistrationController> {
                   ),
                   backgroundColor: Colors.deepPurple,
                 ),
-                child: const Text("Register", style: TextStyle(color: Colors.white)),
+                child: const Text("Login", style: TextStyle(color: Colors.white)),
               ),
             ),
-            
+          SizedBox(
+  height: 50,
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      const Text(
+        "Don't have an account?",
+        style: TextStyle(fontSize: 16),
+      ),
+      const SizedBox(width: 5),
+      TextButton(
+        onPressed: () {
+          Get.toNamed(Approute.register);
+        },
+        child: const Text(
+          "Register",
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            decoration: TextDecoration.underline,
+          ),
+        ),
+      ),
+    ],
+  ),
+)
+
+
+
           ],
         ),
       ),
